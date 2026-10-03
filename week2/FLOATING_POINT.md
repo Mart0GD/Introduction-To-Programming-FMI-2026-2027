@@ -334,3 +334,9 @@ for (0..N)
 **1. Любомир Коев (Number lecture at Chaos Camp) - [Link](https://docs.google.com/presentation/d/1QtD1R_k4bH90Gmt2zDWM7C-MVIdvJJKaUVFBJ-90acA/edit?slide=id.g104af501d60_0_607#slide=id.g104af501d60_0_607)**  
 
 **2. What Every Computer Scientist Should Know About Floating-Point Arithmetic - [Link](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)**
+
+## Други интересни източници, за който му е интересно
+
+**Greg Walsh** - [Fats inverse square root](https://en.wikipedia.org/wiki/Fast_inverse_square_root)
+
+**Сайт за визуализация на числа според IEEE 754 стандарта** - [Link](https://float.exposed/0x41200000)
