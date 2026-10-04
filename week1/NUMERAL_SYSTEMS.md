@@ -215,3 +215,8 @@ $$3CB_{(14)} = 767_{(10)}$$
 
 </p>
 </details>
+
+## Източници
+
+* [Програмиране = ++Алгоритми глава 1.1.6](https://www.programirane.org/wp-content/uploads/downloads/2015/09/Programirane=++Algoritmi-v2015.pdf)
+* [Stack Overflow - octal system usage](https://stackoverflow.com/questions/2609426/in-what-situations-is-octal-base-used)
