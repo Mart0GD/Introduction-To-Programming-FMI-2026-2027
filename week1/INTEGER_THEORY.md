@@ -278,3 +278,9 @@
 ---------------------------------------------------- 
 2^3*(-1) + 2^2*1 + 2^1*1 + 2^0*1 = -8 + 4 + 2 + 1 = -1
 ~~~
+
+## Източници
+
+* [Two's compliment Wikipedia](https://en.wikipedia.org/wiki/Two%27s_complement)
+* [Sebastian lague - how computers work](https://www.youtube.com/watch?v=QZwneRb-zqA)
+* [Sebastian lague's Digital Logic Sim](https://sebastian.itch.io/digital-logic-sim)
