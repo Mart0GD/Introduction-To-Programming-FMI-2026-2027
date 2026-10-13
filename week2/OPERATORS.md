@@ -84,6 +84,4 @@ float f1 = a; // -> 2
 float f2 = b; // -> -2
 ~~~
 
-**
-
 Източник: [cppreference.com – C Operator Precedence](https://en.cppreference.com/c/language/operator_precedence)
