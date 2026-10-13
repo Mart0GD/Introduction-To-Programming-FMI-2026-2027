@@ -1,31 +1,32 @@
 #include <stdio.h>
 
 int main() {
-    // Declaration vs Definition vs Initialization
-    // Syntax: <type> <variable_name> = <value>;
+    // Декларация vs дефиниция vs инициализация
+    // Синтаксис: <тип> <име_на_променлива> = <стойност>;
 
-    // Declaration + Definition (without initialization)
-    int myInt; // memory contains an indeterminate value (often called "garbage")
-    printf("Uninitialized value --> %d\n", myInt);
+    // Декларация + дефиниция (без инициализация)
+    int myInt; // паметта съдържа неопределена стойност (често наричана "боклук")
+    printf("Uninitialized value --> %d\n", myInt); // четенето ѝ е недефинирано поведение
 
-    // Assignment (assigning a value after declaration)
+    // Присвояване (Assignment)
     myInt = 42;
     printf("New value in memory --> %d\n", myInt);
 
-    // Declaration + Definition with initialization
+    // Декларация + дефиниция с инициализация
     int myOtherInt = 100;
     printf("myOtherInt value in memory --> %d\n", myOtherInt);
 
     /*
-        Declaration: gives the type and name; (for the compiler)
-        Definition: allocates storage; (for the linker)
-        Initialization: assigns an initial value at definition time;
+        Декларация:    въвежда името и типа (казва на компилатора, че това име съществува);
+        Дефиниция:     създава самия обект, т.е. заделя памет за него
+                       (за глобалните променливи именно тя е символът, който линкерът търси);
+        Инициализация: задава начална стойност в момента на дефиницията;
     */
 
-    // Const values must be initialized upon Declaration and cannot be changed
+    // const променливите трябва да се инициализират при дефиницията, защото после не могат да се променят
     const int   FINGERS_ON_MY_HAND  = 10;
-    const float PI                  = 3.141592;
+    const float PI                  = 3.141592f;
 
-    // this will result in an error
+    // това ще доведе до грешка при компилация
     // PI = 2;
 }

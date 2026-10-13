@@ -4,17 +4,17 @@ int main(){
 
     float real = 2.334;
     
-    // Implicit type conversion with loss
+    // Имплицитно преобразуване със загуба
     int result_with_loss = real;                // 2
 
-    // Implicit type conversion without loss
+    // Имплицитно преобразуване без загуба
     double result_without_loss = real;          // 2.334
 
-    // Explicit type conversion
+    // Експлицитно преобразуване
     int     cast_with_loss      = (int)real;    // 2
     double  cast_without_loss   = (double)real; // 2.334
 
-    /*   Type promotion
+    /*  Преобразуване на типове в изрази
            char / short
                 ↓
                int
@@ -35,7 +35,7 @@ int main(){
                 ↓
            long double
 
-        !! Important !!
+           !! Важно !!
     */
     return 0;
 }
