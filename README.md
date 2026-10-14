@@ -5,7 +5,7 @@
 | Дата       | Тема  |
 | :---:      | :---: |
 | **05.10.2026** | [Увод - бройни системи, представяне на целочислени типове, булева артиметика](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week1) |
-| **15.10.2026** | [Числа с плаваща/фиксирана запетая. Типове в C. Променливи и константи. Операции и изрази](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week2) |
+| **15.10.2026** | [Числа с плаваща запетая. Типове в C. Променливи и константи. Операции и изрази](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week2) |
 
 ## Допълнителни ресурси и задачи
 
