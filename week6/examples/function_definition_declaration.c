@@ -1,108 +1,100 @@
 #include <stdio.h>
 
 /*
-    Function declarations (prototypes)
-    They tell the compiler what functions exist before main().
+    Декларации на функции (прототипи)
+    Те казват на компилатора какви функции съществуват, преди да стигне до main().
 
-    A function can be declared many times but only defined !!ONCE!!
+    Една функция може да бъде декларирана много пъти, но дефинирана само !!ВЕДНЪЖ!!
 */
 
-void foo_void(void);   // function returning nothing
-int  foo_int(void);    // function returning an integer
+void foo_void(void);   // функция, която не връща нищо
+int  foo_int(void);    // функция, която връща цяло число
 
 int main(void) {
 
     /*
-        What is a function?
+        Какво е функция?
 
-        A function is a named block of code with a defined scope and, optionally,
-        parameters. Its purpose is to:
-        - organize logic into smaller reusable pieces
-        - improve readability
-        - avoid code duplication
-        - do a single task!!
+        Функцията е именуван блок от код със собствен обхват (scope) и, по желание, параметри.
+        Целта ѝ е да:
+	
+        - Разделя логиката на по-малки части за многократна употреба
+        - Подобрява четимостта
+        - Избягва повторението на код
+        - Изпълнява една-единствена задача!!
     */
 
     /*
-        Function declaration syntax:
+        Синтаксис на декларация:
 
-        <return type> <function_name>(<parameters>);
+        <спецификатори (по желание)> <тип на връщане> <име_на_функция>(<параметри>);
 
         ───────────────────────────────────────────────────────────────
-        Function definition syntax:
+        Синтаксис на дефиниция:
 
-        <return_type> <function_name>(<parameters>) <optional-specifiers>
+        <спецификатори (по желание)> <тип на връщане> <име_на_функция>(<параметри>)
         {
-            // function body (scope)
+            // тяло на функцията (обхват)
         }
 
         ───────────────────────────────────────────────────────────────
 
-        > Return type:
+        > Тип на връщане:
 
-            void foo() {}    → a function that does not return a value
-            int  foo() {}    → a function that returns an integer value
-            double foo() {}  → a function that returns a double value
+            void   foo(void) {}  → функция, която не връща стойност
+            int    foo(void) {}  → функция, която връща цяло число
+            double foo(void) {}  → функция, която връща число с плаваща запетая (double)
 
-        If a function returns a type other than void, it must use `return`.
+        Ако функцията връща тип, различен от void, тя трябва да използва `return`
+        със стойност. (Изключение е main: ако липсва return, се приема по подразбиране return 0;)
 
         ───────────────────────────────────────────────────────────────
 
-        > Function name (identifier):
+        > Име на функцията (идентификатор):
 
-            Naming conventions vary but **recommended**:
+            Конвенциите за именуване са различни, но **препоръчително**:
             - snake_case → my_function()
             - PascalCase → MyFunction()
 
-            Avoid camelCase for function names in C (more common in C++/Java).
+            Избягвай camelCase за имена на функции в C (по-често се среща в C++/Java).
 
         ───────────────────────────────────────────────────────────────
 
-        > Function parameters:
+        > Параметри на функцията:
 
-            void foo(void)
-            void foo()        → same meaning in C: takes no parameters
+            1) void foo(void)    → изрично: функцията НЕ приема параметри
+            2) void foo()        → <= C23: "неуточнен брой параметри"
+                                >= C23: същото като (void)
 
-            type name(type param1, type param2, ...)
+            Затова винаги пишите (void), когато няма параметри!!!
 
-            Example:
+            3) void foo(<тип> параметър1, <тип> параметър2, ...)
+
+            Пример:
                 void print_sum(int a, int b);
 
-            Each parameter has:
-                - a type
-                - a name
-
-        ───────────────────────────────────────────────────────────────
-
-        > Keyword specifiers:
-
-            Examples include:
-                static
-                extern
-                inline
-                const
-
-            They change how a function behaves or is visible across files.
-            We will explore these later.
+            Всеки параметър има:
+                - тип (всеки от изучените до момента)
+                - име
     */
 
-    foo_void();          // calling function that returns nothing
-    int a = foo_int();   // calling function that returns an int
+    foo_void();          // извикване на функция, която не връща нищо
+    int a = foo_int();   // извикване на функция, която връща int; резултатът се записва в a
 
     return 0;
 }
 
 
 /*
-    Function definitions
+    Дефиниции на функциите
 */
 
 void foo_void(void) {
     puts("foo_void() was called! It returns nothing.");
-    return;      // We do not have to return. We can omit it
+    return;      // Не е задължително. Можем да го пропуснем.
 }
 
 int foo_int(void) {
     puts("foo_int() was called! It returns an int.");
-    return 42;   // We must return a value because return type is int
+    return 42;   // Задължително връщаме стойност, защото типът на връщане е int
 }

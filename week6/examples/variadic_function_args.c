@@ -1,72 +1,104 @@
+/*
+**********************************************************************************
+    Този материал е изцяло допълнителен.
+    Създаден е с цел по-доброто разбиране на функции с неопределен брой аргументи!  
+**********************************************************************************
+*/
+
 #include <stdio.h>
+#include <stdarg.h>   // нужен за работа с променлив брой аргументи (va_list, va_start, ...)
 
-// function forward declaration
-int add(int number_of_agrs, ...);
+int add(int number_of_args, ...);
 
-int main(){
-
-    /*
-        Variadic function arguments are used to pass an unknow number of parameteres to a function
-        ** For people used to C# or Java this is the same as params keyword **
-    */
-
-    // An easy example for a function with variable number of arguments is printf
-    // printf(<string to be formated>, arg1, arg2, ...);
+int main(void) {
 
     /*
-        in this case printf starts reading the string:
-        1) it sees %d it knows to read one argument from the list of type signed int
-        2) it reaches the end,
-        3) we pass the only argument in the list which is a function with 5 arguments to sum
+        Функциите с променлив брой аргументи (variadic functions) се използват,
+        когато искаме да подадем неизвестен предварително брой аргументи.
+
+        ** Прилича на 'params' в C# и на '...' (varargs) в Java, НО има важна разлика:
+           в C функцията НЕ знае колко аргумента са ѝ подадени, нито какъв е типът им.
+           Ние трябва сами да ѝ го кажем (напр. чрез брой или форматиращ низ). **
     */
-    printf("%d\n", add(5 ,1 ,2 ,3 ,4 ,5));
+
+    // Познат пример за такава функция е printf:
+    // printf(<форматиращ низ>, арг1, арг2, ...);
+
+    /*
+        Какво се случва на реда по-долу:
+
+        1) ПЪРВО се изчислява add(5, 1, 2, 3, 4, 5), защото аргументите
+           на една функция се изчисляват, преди тя да бъде извикана.
+           Резултатът е 15.
+
+        2) След това се извиква printf("%d\n", 15).
+
+        3) printf започва да чете низа. Когато стигне до %d, знае, че трябва
+           да вземе ЕДИН аргумент от списъка от тип int (15), и го отпечатва.
+
+        4) Стига до края на низа и приключва.
+    */
+    printf("%d\n", add(5, 1, 2, 3, 4, 5));   // извежда: 15
+
     return 0;
 }
 
-// To be able to work with variable number of arguments we'll have to use the stdarg.h header 
-#include <stdarg.h>
 
-int add(int number_of_agrs, ... /* the va_arg ... should always be at the end*/){
+int add(int number_of_args, ... /* '...' винаги трябва да е последен */) {
 
-    // this is a special defined type for storing the arguments
-    va_list list_to_extract_argumets;
+    /*
+        Преди '...' трябва да има поне един именуван параметър (до C23).
+        Тук той ни казва колко аргумента следват.
+    */
+
+    // специален тип за обхождане на допълнителните аргументи
+    va_list args;
 
     /*
         void va_start(va_list ap, paramN)
 
-        ap      --> the va_list to be initialized for later use
-        paramN  --> the rightmost param before the ... 
+        ap      --> списъкът va_list, който инициализираме
+        paramN  --> последният именуван параметър преди '...'
     */
-    va_start(list_to_extract_argumets, number_of_agrs);
+    va_start(args, number_of_args);
 
     /*
         type va_arg(va_list ap, type)
 
-        Extracts the next argument from the argument list provided in the function
-        If there are no further arguments or if the next argument is not of the specified type
-        we have undefined behavior!
-    */
-    int sum  = va_arg(list_to_extract_argumets, int);
-    for(int i = 2; i <= number_of_agrs; ++i){
-        sum += va_arg(list_to_extract_argumets, int);
-    }
+        Взима СЛЕДВАЩИЯ аргумент от списъка като стойност от тип 'type'.
 
+        НЕДЕФИНИРАНО ПОВЕДЕНИЕ, ако:
+        - няма повече аргументи (va_arg не знае кога свършват!)
+        - следващият аргумент не е от посочения тип
+
+        ВНИМАНИЕ: при подаване към '...' типовете се "повишават" автоматично:
+            char, short  --> int
+            float        --> double
+        Затова va_arg(args, char) и va_arg(args, float) са грешни.
+        Използвай va_arg(args, int) и va_arg(args, double).
+    */
+    int sum = 0;
+    for (int i = 0; i < number_of_args; ++i) {
+        sum += va_arg(args, int);
+    }
 
     /*
         void va_end(va_list ap)
 
-        Prevents the list to be used any further. If not used than we have indefined behaviour. 
+        Приключва работата със списъка. След това той не може да се използва.
+        Всяко va_start ТРЯБВА да има съответно va_end в същата функция,
+        иначе поведението е недефинирано.
     */
-    va_end(list_to_extract_argumets);
+    va_end(args);
 
     return sum;
 }
 
 
 /*
-    read more about the topic:
+    Прочети повече по темата:
 
     > https://publications.gbdirect.co.uk/c_book/chapter9/stdarg.html
-    > https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf (The C11 standart read chapter 9.11)
-
+    > https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf
+      (чернова на стандарта C11, раздел 7.16 <stdarg.h>)
 */
