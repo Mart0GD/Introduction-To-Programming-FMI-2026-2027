@@ -9,6 +9,7 @@
 | **22.10.2026**| [Вход и изход. Побитови операции](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week3)|
 | **29.10.2026**| [Област на действие. Съставни оператори - if/else/switch](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week4)|
 | **05.11.2026**| [Циклично изпълнение. Видове циклични процеси.](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week5)|
+| **12.11.2026**| [Функции - декларация, дефиниця. Ход на програмата. Стекова рамка](https://github.com/Mart0GD/Introduction-To-Programming-FMI-2026-2027/tree/main/week6)|
 
 
 ## Допълнителни ресурси и задачи
