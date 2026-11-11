@@ -30,8 +30,8 @@ void foo(float a)       // Компилационна грешка: conflicting 
 
     Например в C++ (компилатор g++):
 
-        int   sum(int a, int b);        --> става _Z3sumii   (i = int)
-        float sum(float a, float b);    --> става _Z3sumff   (f = float)
+        int   sum(int a, int b);        --> става _Z3sumi   (i = int)
+        float sum(float a, float b);    --> става _Z3sumf   (f = float)
 
     В C можем да постигнем подобен ефект, но РЪЧНО:
         1) даваме на всяка функция уникално име (ръчно "декориране")
